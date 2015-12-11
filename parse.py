@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-
-
+from job_objects import job_object as jo
 
 
 def parse_finn_job(url):
@@ -20,9 +19,9 @@ def parse_finn_job(url):
         return print("Error has occured. Cannot parse")
     document = ingress.text + "\n" + heading.text + "\n" + body.text
     if deadline == None:
-        return (url, document, "")
+        return jo.Job(url, document)
     else:
-        return (url, document, deadline.text.replace("\"", "").strip())
+        return jo.Job(url, document, deadline=deadline.text.replace("\"", "").strip())
 
 
 
