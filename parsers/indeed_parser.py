@@ -11,6 +11,10 @@ def parse_indeed_job(url):
         if page_content == None:
             print("Error has occured. Cannot parse")
             return None
+        aggregated_from = page_content.find("span", {"class" : "sdn"})
+        if aggregated_from.text == "FINN.no ":
+            print("This job exists on FINN.no")
+            return None
         job_title = page_content.find("b", {"class" : "jobtitle"})
         description = page_content.find("span", {"id" : "job_summary"})
         company = page_content.find("span", {"class" : "company"})
