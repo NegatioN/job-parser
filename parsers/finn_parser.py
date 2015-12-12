@@ -4,13 +4,12 @@ from job_objects import job_object as jo
 
 date_sort = "1"
 
-
 def parse_finn_job(url):
     soup = download_soup(url)
     page_content = soup.find("div", { "id" : "ObjectContent" })
     if page_content == None:
         print("Error has occured. Cannot parse")
-        return (url, None)
+        return None
     ingress = page_content.find("div", {"class" : "ingress"})
     body = page_content.find("div", {"id" : "description"})
     heading = page_content.find("header")
