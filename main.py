@@ -10,7 +10,6 @@ def main():
     ##download_soup(args['url']
 
     url = "http://no.indeed.com/jobs?q=bank&l=Oslo"
-
     jobs_collection = []
 
     if "finn" in url:
