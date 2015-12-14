@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 from job_objects import job_object as jo
+import elastic_handler
 
 date_sort = "date"
 
@@ -12,8 +13,7 @@ def parse_indeed_job(url):
             print("Error has occured. Cannot parse")
             return None
         aggregated_from = page_content.find("span", {"class" : "sdn"})
-        if aggregated_from.text == "FINN.no ":
-            print("This job exists on FINN.no")
+        if "Finn.no" in aggregated_from.text:
             return None
         job_title = page_content.find("b", {"class" : "jobtitle"})
         description = page_content.find("span", {"id" : "job_summary"})

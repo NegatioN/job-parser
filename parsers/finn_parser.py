@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 from job_objects import job_object as jo
+import elastic_handler
 
 date_sort = "1"
 
